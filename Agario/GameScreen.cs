@@ -13,6 +13,7 @@ namespace Agario
 {
     public partial class GameScreen : UserControl
     {
+        //variables for keys 
         Boolean aDown, sDown, dDown, wDown, cDown, vDown, xDown, zDown;
 
         //list for point boxes 
@@ -70,6 +71,8 @@ namespace Agario
             int yValue = randGen.Next(1, this.Height - 10);
 
             Square s = new Square(xValue, yValue, 10, 0, colour);
+
+            //adds points boxes to list 
             pointsList.Add(s);
 
             //creates player box 
