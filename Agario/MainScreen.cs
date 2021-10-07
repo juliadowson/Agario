@@ -35,6 +35,5 @@ namespace Agario
             //closes application 
             Application.Exit();
         }
-
     }
 }

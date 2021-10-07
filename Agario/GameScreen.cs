@@ -168,8 +168,8 @@ namespace Agario
             }
             
             //runs gameover method if either player reaches 250 points 
-            if (points1 == 5) { GameOver("Player 1 Wins!"); }
-            else if (points2 == 5) { GameOver("Player 2 Wins!"); }    
+            if (points1 == 250) { GameOver("Player 1 Wins!"); }
+            else if (points2 == 250) { GameOver("Player 2 Wins!"); }    
         }
 
         private void GameOver(string winner)
@@ -279,6 +279,5 @@ namespace Agario
                     break;
             }
         }
-
     }
 }
