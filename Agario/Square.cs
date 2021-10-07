@@ -45,12 +45,12 @@ namespace Agario
         public bool Collision(Square s)
         {
             //creates rectangles for collisions 
-            Rectangle player1Rec = new Rectangle(x, y, GameScreen.player1Size, GameScreen.player1Size);
-            Rectangle player2Rec = new Rectangle(x, y, GameScreen.player2Size, GameScreen.player2Size);
+            Rectangle playerRec = new Rectangle(x, y, size, size);
             Rectangle pointsRec = new Rectangle(s.x,s.y, s.size, s.size);
 
-            if (player1Rec.IntersectsWith(pointsRec) || player2Rec.IntersectsWith(pointsRec))
+            if (playerRec.IntersectsWith(pointsRec))
             {
+                size += 1;
                 return true;
             }
             else

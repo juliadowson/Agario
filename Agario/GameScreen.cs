@@ -22,18 +22,14 @@ namespace Agario
         //creates random genrator for x, y and colour of points 
         Random randGen = new Random();
         int newPointCounter = 0;
-        //variable for winner 
-        public static string winner;
 
         //player1 values 
         Square player1;
         int points1 = 0;
-        public static int player1Size = 10;
 
         //player2 values 
         Square player2;
         int points2 = 0;
-        public static int player2Size = 10;
 
         //brushes
         SolidBrush whiteBrush = new SolidBrush(Color.White);
@@ -76,8 +72,8 @@ namespace Agario
             pointsList.Add(s);
 
             //creates player box 
-            player1 = new Square(300, 850, player1Size, 15, "");
-            player2 = new Square(1300, 850, player2Size, 15, "");
+            player1 = new Square(300, 850, 10, 15, "");
+            player2 = new Square(1300, 850, 10, 15, "");
 
             this.Focus();
         }
@@ -161,38 +157,25 @@ namespace Agario
                 {                  
                     points1++;
                     points1Label.Text = $"{points1}";
-                    pointsList.RemoveAt(i);
-                    player1Size += 1;
+                    pointsList.RemoveAt(i);                   
                 }
                 else if (player2.Collision(pointsList[i]))
                 {
                     points2++;
                     points2Label.Text = $"{points2}";
-                    pointsList.RemoveAt(i);
-                    player2Size += 1;
+                    pointsList.RemoveAt(i);                 
                 }
             }
             
             //runs gameover method if either player reaches 250 points 
-            if (points1 >= 251)
-            {
-                winner = "Player 1 Wins!";
-                GameOver();               
-            }
-            else if (points2 >= 251)
-            {
-                winner = "Player 2 Wins!";
-                GameOver();
-            }            
+            if (points1 == 5) { GameOver("Player 1 Wins!"); }
+            else if (points2 == 5) { GameOver("Player 2 Wins!"); }    
         }
 
-        private void GameOver()
+        private void GameOver(string winner)
         {
             gameTimer.Enabled = false;
 
-            //resets variables 
-            player1Size = 10;
-            player2Size = 10;
             points1 = 0;
             points2 = 0;
 
@@ -229,8 +212,8 @@ namespace Agario
             }
 
             //draws players 
-            e.Graphics.FillRectangle(whiteBrush, player1.x, player1.y, player1Size, player1Size);
-            e.Graphics.FillRectangle(whiteBrush, player2.x, player2.y, player2Size, player2Size);
+            e.Graphics.FillRectangle(whiteBrush, player1.x, player1.y, player1.size, player1.size);
+            e.Graphics.FillRectangle(whiteBrush, player2.x, player2.y, player2.size, player2.size);
         }
 
         private void GameScreen_KeyUp(object sender, KeyEventArgs e)
